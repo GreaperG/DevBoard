@@ -10,16 +10,44 @@
             <a href="{{ route('projects.create') }}" class="btn"> Новый Проект </a>
 
             @foreach($projects as $project)
-                <div class="border p-4 mt-4">
-                    <h3>{{ $project->name }}</h3>
-                    <p>{{ $project->description }} </p>
-                    <a href="{{route('projects.edit', $project)}}"> Редактировать </a>
+                    <div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default">
+                        <table class="w-full text-sm text-left rtl:text-right text-body">
+                            <thead class="text-sm text-body bg-neutral-secondary-soft border-b rounded-base border-default">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 font-medium">
+                                    Name of Project
+                                </th>
+                                <th scope="col" class="px-6 py-3 font-medium">
+                                    Description of Project
+                                </th>
+                                <th scope="col" class="px-6 py-3 font-medium">
+                                    Edit Project
+                                </th>
+                                <th scope="col" class="px-6 py-3 font-medium">
+                                    Delete Project
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="bg-neutral-primary border-b border-default">
+                                <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-nowrap">
+                                    {{ $project->name }}
+                                </th>
+                                <td class="px-6 py-4">
+                                    {{ $project->description }}
+                                </td>
+                                <td class="px-6 py-4">
+                                <a href="{{route('projects.edit', $project)}}"> Редактировать </a>
+                                </td>
+                                <td class="px-6 py-4">
+                                <form action="{{route('projects.destroy', $project)}}" method="POST">Удалить</form>
+                                </td>
+                            </tr>
 
-                <form action="{{route('projects.destroy', $project)}}" method="POST">
+                            </tbody>
                 @csrf
                 @method('DELETE')
                     <button type="submit">Удалить</button>
-                </form>
                 </div>
             @endforeach
         </div>
