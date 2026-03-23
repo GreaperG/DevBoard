@@ -40,15 +40,16 @@
                                 <a href="{{route('projects.edit', $project)}}"> Редактировать </a>
                                 </td>
                                 <td class="px-6 py-4">
-                                <form action="{{route('projects.destroy', $project)}}" method="POST">Удалить</form>
+                                <form action="{{route('projects.destroy', $project)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit">Удалить</button>
+                                </form>
+
                                 </td>
                             </tr>
-
                             </tbody>
-                @csrf
-                @method('DELETE')
-                    <button type="submit">Удалить</button>
-                </div>
+                   </div>
             @endforeach
         </div>
 </x-app-layout>

@@ -28,7 +28,9 @@ class ProjectController extends Controller
             'deadline' => 'required',
         ]);
 
-        auth()->user()->projects()->create($validated);
+        $project = auth()->user()->projects()->create($validated);
+
+        $project->members()->attach(auth()->id(), ['role' => 'owner']);
 
         return redirect()->route('projects.index')
             ->with('success', 'Project created successfully.');
