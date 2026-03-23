@@ -28,6 +28,9 @@
                                     Delete Project
                                 </th>
                                 <th scope="col" class="px-6 py-3 font-medium">
+                                    Show Project
+                                </th>
+                                <th scope="col" class="px-6 py-3 font-medium">
                                     Deadline
                                 </th>
                             </tr>
@@ -42,7 +45,7 @@
                                     {{ $project->description }}
                                 </td>
                                 <td class="px-6 py-4">
-                                <a href="{{route('projects.edit', $project)}}"> Редактировать </a>
+                                <a href="{{route('projects.edit', $project)}}"> Edit </a>
                                 </td>
                                 <td class="px-6 py-4">
                                 <form action="{{route('projects.destroy', $project)}}" method="POST">
@@ -50,6 +53,10 @@
                                     @method('DELETE')
                                     <button type="submit">Удалить</button>
                                 </form>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <a href="{{route('projects.show', $project)}}">Show</a>
+
                                 </td>
                                 <td class="px-6 py-4">
                                     {{ $project->deadline }}
