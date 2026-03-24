@@ -6,35 +6,17 @@
             @if(session('success'))
                 <div class="bg-green-100 p-4 mb-4">{{session('success') }}</div>
             @endif
-            <div x-data="{ projectId: null }">
+            <div x-data="{ selectedId: null }">
                 <form
                     id="delete-form"
-                    x-bind:action="'/projects/' + projectId"
+                    x-bind:action="'/projects/' + selectedId"
                     method="POST"
                 >
                     @csrf
                     @method('DELETE')
                 </form>
 
-              <div class="max-w-3xl ml-80 mb-4">
-                  <a
-                     x-bind:href="selectedId ? '/projects/' + selectedId + '/edit' : '#'"
-                     x-bind:class="selectedId ? '' : 'opacity-50 pointer-events-none'"
-                      class='inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150'>Edit </a>
 
-                  <a
-                      x-bind:href="selectedId ? '/projects/' + projectId  + '/tasks' + taskId : '#'"
-                      x-bind:class="selectedId ? '' : 'opacity-50 pointer-events-none'"
-                      class='inline-flex items-center px-4 py-2 bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150'>Show </a>
-
-                  <button
-                      x-bind:disabled="!selectedId"
-                      x-bind:class="selectedId ? '' : 'opacity-50 pointer-events-none'"
-                      @click="document.getElementById('delete-form').submit()"
-                      class="inline-flex items-center px-4 py-2 bg-red-600 text-white rounded-md text-xs font-semibold uppercase"
-                  >Delete</button>
-
-              </div>
 
                     <div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default max-w-3xl ml-80">
                         <table class="text-sm text-left rtl:text-right text-body">
@@ -70,10 +52,10 @@
                                     <label for="default-checkbox" class="select-none ms-2 text-sm font-medium text-heading"></label>
                                 </th>
                                 <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-nowrap">
-                                    {{ $project->name }}
+                                    {{ $task->name }}
                                 </th>
                                 <td class="px-6 py-4">
-                                    {{ $project->description }}
+                                    {{ $task->description }}
                                 </td>
                                 <td class="px-6 py-4">
                                 <a href="{{route('projects.edit', $project)}}"> Edit </a>
@@ -89,7 +71,7 @@
                                     <a href="{{route('projects.show', $project)}}">Show</a>
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ $project->deadline }}
+                                    {{ $task->deadline }}
                                 </td>
                             </tr>
                             @endforeach
