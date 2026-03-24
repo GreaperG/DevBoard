@@ -8,7 +8,6 @@
         <title>{{ config('app.name', 'Laravel') }}</title>
 
         <!-- Fonts -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
@@ -16,7 +15,9 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
+    @include('layouts.sidebar')
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+            <div class="sm:ml-64">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
@@ -27,6 +28,7 @@
                     </div>
                 </header>
             @endisset
+            </div>
 
             <!-- Page Content -->
             <main>
