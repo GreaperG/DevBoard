@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Project;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -38,7 +39,8 @@ class ProjectController extends Controller
 
     public function show(Project $project)
     {
-        return view('projects.show', compact('project'));
+        $tasks = $project->tasks()->get();
+        return view('projects.show', compact('project','tasks'));
     }
 
     public function edit(Project $project)
