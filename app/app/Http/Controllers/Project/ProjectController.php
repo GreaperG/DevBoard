@@ -37,7 +37,7 @@ class ProjectController extends Controller
             ->with('success', 'Project created successfully.');
     }
 
-    public function show(Project $project)
+    public function show(Project $project,Task $task)
     {
         $tasks = $project->tasks()->get();
         return view('projects.show', compact('project','tasks'));

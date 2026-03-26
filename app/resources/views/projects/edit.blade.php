@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot name="header">Новые проект</x-slot>
+    <x-slot name="header">Edit Project</x-slot>
 
     <form class="max-w-sm mx-auto space-y-10" action="{{route ('projects.store') }}" method="POST">
         @csrf

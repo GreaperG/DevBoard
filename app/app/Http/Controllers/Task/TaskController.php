@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Task;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\Task;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -34,5 +35,9 @@ class TaskController extends Controller
         return redirect()->route('projects.show', $project)
             ->with('success', 'Task created successfully.');
 
+    }
+    public function edit(Project $project,Task $task)
+    {
+        return view('tasks.edit', compact('project', 'task'));
     }
 }

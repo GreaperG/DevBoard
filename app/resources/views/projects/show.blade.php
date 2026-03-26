@@ -15,11 +15,16 @@
                                    <h2>{{ $project->deadline }}</h2>
 
         </div>
+    <div x-data="{ selectedTaskId: null, projectId: {{ $project->id }} }">
     <div class="max-w-3xl ml-80 mb-4">
-    <a
-        href="{{route('projects.tasks.create', $project)}}"
+    <a href="{{route('projects.tasks.create', $project)}}"
         class="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-md text-xs font-semibold uppercase"
     >Add Task</a>
+        <a
+          x-bind:href="selectedTaskId ? '/projects/' + projectId + '/tasks/' + selectedTaskId +'/edit' : '#'"
+          x-bind:class="selectedTaskId ? '' : 'opacity-50 pointer-events-none'"
+           class="inline-flex items-center px-4 py-2 bg-gray-600 text-white rounded-md text-xs font-semibold uppercase"
+        >Edit Task</a>
     </div>
 
 
@@ -44,7 +49,7 @@
                 @foreach($tasks as $task)
                     <tr class="bg-neutral-primary border-b border-default">
                         <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-nowrap">
-                            <input id="default-checkbox" type="checkbox" value="{{$task->id}}" @change="selectedId = $event.target.checked ? $event.target.value : null" class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft">
+                            <input id="default-checkbox" type="checkbox" value="{{$task->id}}" @change="selectedTaskId = $event.target.checked ? $event.target.value : null" class="w-4 h-4 border border-default-medium rounded-xs bg-neutral-secondary-medium focus:ring-2 focus:ring-brand-soft">
                             <label for="default-checkbox" class="select-none ms-2 text-sm font-medium text-heading"></label>
                         </th>
                         <th scope="row" class="px-6 py-4 font-medium text-heading whitespace-nowrap">
@@ -62,7 +67,7 @@
             </table>
         </div>
 
-
+    </div>
 
 
 
