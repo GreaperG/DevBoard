@@ -15,6 +15,12 @@
                                    <h2>{{ $project->deadline }}</h2>
 
         </div>
+    <div class="max-w-3xl ml-80 mb-4">
+    <a
+        href="{{route('projects.tasks.create', $project)}}"
+        class="inline-flex items-center px-4 py-2 bg-green-600 text-white rounded-md text-xs font-semibold uppercase"
+    >Add Task</a>
+    </div>
 
 
         <div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default max-w-3xl ml-80">
