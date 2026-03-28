@@ -19,5 +19,6 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('projects', ProjectController::class);
     Route::resource('projects.tasks', TaskController::class);
+    Route::get('/projects/{project}/invite', [ProjectController::class, 'invite'])->name('projects.invite');
 });
 require __DIR__.'/auth.php';

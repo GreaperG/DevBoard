@@ -31,6 +31,9 @@
                     <a x-bind:href="selectedTaskId ? '/projects/' + projectId + '/tasks/' + selectedTaskId +'/edit' : '#'"
                        x-bind:class="selectedTaskId ? '' : 'opacity-50 pointer-events-none'" >Edit Task</a>
                 </li>
+                <li>
+                    <a href="{{route('projects.invite', $project)}}">Add User</a>
+                </li>
             </ul>
         </div>
 
