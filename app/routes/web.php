@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Project\ProjectController;
 use App\Http\Controllers\Task\TaskController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\User\UserController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,5 +21,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('projects', ProjectController::class);
     Route::resource('projects.tasks', TaskController::class);
     Route::get('/projects/{project}/invite', [ProjectController::class, 'invite'])->name('projects.invite');
+    Route::get('/users/search', [UserController::class, 'search'])->name('users.search');
 });
 require __DIR__.'/auth.php';

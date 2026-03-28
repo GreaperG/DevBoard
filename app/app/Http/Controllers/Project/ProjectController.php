@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Project;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Models\Task;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -72,4 +73,5 @@ class ProjectController extends Controller
     {
         return view('projects.invite', compact('project'));
     }
+
 }

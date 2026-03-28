@@ -17,33 +17,25 @@
 
 
     <div class="max-w-3xl ml-80 mb-4">
-        <label class="input validator">
-            <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <g
-                    stroke-linejoin="round"
-                    stroke-linecap="round"
-                    stroke-width="2.5"
-                    fill="none"
-                    stroke="currentColor"
-                >
-                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="12" cy="7" r="4"></circle>
-                </g>
-            </svg>
+        <div x-data="{ users: [], search: ''}">
             <input
                 type="text"
-                required
-                placeholder="Username"
-                pattern="[A-Za-z][A-Za-z0-9\-]*"
-                minlength="3"
-                maxlength="30"
-                title="Only letters, numbers or dash"
-            />
-        </label>
-        <p class="validator-hint">
-            Must be 3 to 30 characters
-            <br />containing only letters, numbers or dash
-        </p>
+                x-model="search"
+                @input.debounce.300ms="
+                  fetch('{{route('users.search') }}' + '?search=' + search)
+                  .then(response => response.json())
+                  .then(response => users = response.results)
+                "
+                placeholder="Поиск пользователей..."
+                class="border rounded px-3 py-2 w-full"
+                />
+
+        <ul>
+            <template x-for="user in users" :key="user.id">
+                <li x-text="user.name + ' - ' + user.email"></li>
+            </template>
+        </ul>
+        </div>
     </div>
 
 
