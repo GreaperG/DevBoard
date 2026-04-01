@@ -22,5 +22,6 @@ Route::middleware('auth')->group(function () {
     Route::resource('projects.tasks', TaskController::class);
     Route::get('/projects/{project}/invite', [ProjectController::class, 'invite'])->name('projects.invite');
     Route::get('/users/search', [UserController::class, 'search'])->name('users.search');
+    Route::post('/projects/{project}/invite/{user}', [ProjectController::class, 'addMember'])->name('projects.addMember');
 });
 require __DIR__.'/auth.php';

@@ -74,4 +74,9 @@ class ProjectController extends Controller
         return view('projects.invite', compact('project'));
     }
 
+    public function addMember(Project $project, User $user)
+    {
+        $project->members()->attach($user, ['role' => 'member']);
+        return response()->json(['success' => true]);
+    }
 }
