@@ -38,7 +38,7 @@
                 type="text"
                 x-model="search"
                 @input.debounce.300ms="
-                  fetch('{{route('users.search') }}' + '?search=' + search)
+                  fetch('{{route('users.search') }}' + '?search=' + search + '&project_id={{ $project->id }}')
                   .then(response => response.json())
                   .then(response => users = response.results)
                 "
