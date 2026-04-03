@@ -79,4 +79,20 @@ class ProjectController extends Controller
         $project->members()->attach($user, ['role' => 'member']);
         return response()->json(['success' => true]);
     }
+
+    public function remove(Project $project, User $user)
+    {
+        return view('projects.remove', compact('project', 'user'));
+    }
+
+    public function removeMember(Project $project, User $user)
+    {
+        $project->members()->detach($user, ['role' => 'member']);
+        return response()->json(['success' => true]);
+    }
+
+    public function overview(Project $project)
+    {
+        return view('projects.overview', compact('project'));
+    }
 }
