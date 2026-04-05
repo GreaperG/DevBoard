@@ -14,7 +14,9 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = auth()->user()->projects()->latest()->get();
-        return view('projects.index', compact('projects'));
+        return view('projects.index', [
+            'projects' => DB::table('projects')->paginate(10)
+        ]);
     }
 
     public function create()
