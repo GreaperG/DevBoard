@@ -42,7 +42,7 @@
 
               </div>
 
-                    <div class="relative overflow-x-auto bg-neutral-primary-soft shadow-xs rounded-base border border-default max-w-3xl ml-80">
+                    <div class="relative overflow-x-auto bg-neutral-primary-soft max-w-3xl ml-80">
                         <table class="text-sm text-left rtl:text-right text-body">
                             <thead class="text-sm text-body bg-neutral-secondary-soft border-b rounded-base border-default">
                             <tr>

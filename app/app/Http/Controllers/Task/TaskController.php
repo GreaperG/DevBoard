@@ -17,6 +17,7 @@ class TaskController extends Controller
 
     public function create(Project $project)
     {
+        $members = $project->members()->get();
         return view('tasks.create', compact('project'));
     }
 
@@ -38,6 +39,7 @@ class TaskController extends Controller
     }
     public function edit(Project $project,Task $task)
     {
-        return view('tasks.edit', compact('project', 'task'));
+        $members = $project->members()->get();
+        return view('tasks.edit', compact('project', 'task', 'members'));
     }
 }

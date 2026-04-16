@@ -13,10 +13,8 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        $projects = auth()->user()->projects()->latest()->get();
-        return view('projects.index', [
-            'projects' => DB::table('projects')->paginate(10)
-        ]);
+        $projects = auth()->user()->projects()->latest()->paginate(10);
+        return view('projects.index',compact('projects'));
     }
 
     public function create()
@@ -43,7 +41,8 @@ class ProjectController extends Controller
     public function show(Project $project,Task $task)
     {
         $tasks = $project->tasks()->get();
-        return view('projects.show', compact('project','tasks'));
+        $members = $project->members()->get();
+        return view('projects.show', compact('project','tasks', 'members'));
     }
 
     public function edit(Project $project)

@@ -32,6 +32,18 @@
         </div>
 
         <div>
+            <x-input-label for="assigned_to" value="Assigned_to" />
+            <select name="assigned_to" id="assigned_to" class="border-gray-300 rounded-md shadow-sm w-full">
+                @foreach($members as $member)
+                    <option value="{{ $member->id }}" {{ old('assigned_to', $task->assigned_to) == $member->id ? 'selected' : '' }}>
+                        {{ $member->name }}
+                    </option>
+                @endforeach
+            </select>
+
+        </div>
+
+        <div>
             <x-input-label for="priority" value="Priority" />
             <select name="priority" id="priority" class="border-gray-300 rounded-md shadow-sm w-full">
                 <option value="low" {{ old('priority', $task->priority) == 'low' ? 'selected' : '' }}>Low</option>

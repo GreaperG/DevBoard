@@ -44,7 +44,7 @@
 
 
 
-        <div class="relative overflow-x-auto bg-neutral-primary-soft max-w-2xl ml-80">
+        <div class="relative overflow-x-auto bg-neutral-primary-soft max-w-3xl ml-80">
             <table class="text-sm text-left rtl:text-right text-body">
                 <thead class="text-sm text-body bg-neutral-secondary-soft border-b rounded-base border-default">
                 <tr>
@@ -64,6 +64,9 @@
                     </th>
                     <th scope="col" class="px-6 py-3 font-medium">
                         Status
+                    </th>
+                    <th scope="col" class="px-6 py-3 font-medium">
+                        Assign To
                     </th>
                 </tr>
                 </thead>
@@ -88,6 +91,11 @@
                         </td>
                         <td class="px-6 py-4">
                             {{$task->status}}
+                        </td>
+                        <td class="px-6 py-4">
+                            @foreach($members as $member)
+                                {{$member->name}}
+                            @endforeach
                         </td>
                     </tr>
                 @endforeach
