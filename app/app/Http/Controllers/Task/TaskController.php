@@ -18,7 +18,7 @@ class TaskController extends Controller
     public function create(Project $project)
     {
         $members = $project->members()->get();
-        return view('tasks.create', compact('project'));
+        return view('tasks.create', compact('project','members'));
     }
 
     public function store(Request $request, Project $project)
